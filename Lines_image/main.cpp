@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    QImage inputImage("D:/lena.png");
+    QImage inputImage("lena.png");
     QImage resultImage(inputImage.size(), QImage::Format_ARGB32);
     QMap<QRgb, int> histogram;
 
@@ -29,6 +29,27 @@ int main(int argc, char *argv[])
     }
 
     // Result render
+    int pixelCount = inputImage.width() * inputImage.height();
+    int startPosition = 0;
+    float finalCheck = 0.0f;
 
-    resultImage.save("D:/result.png");
+    foreach(QRgb color, histogram.keys())
+    {
+        float currentColor = (float)histogram.value(color) / pixelCount * inputImage.width();
+        int widthColumn = qRound(currentColor);
+
+        finalCheck += currentColor;
+
+        for (int i = startPosition; i < (startPosition + widthColumn); i++)
+        {
+            for (int o = 0; o < resultImage.height(); o++)
+            {
+                resultImage.setPixel(i, o, color);
+            }
+        }        
+
+        startPosition += widthColumn;
+    };
+
+    resultImage.save("result.png");
 }
