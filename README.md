@@ -2,7 +2,7 @@
 Simple software to change a representation of the input image from the 2D pixel grid to blocks composed of vertical lines. The thickness of each block is determined from the number of pixels with respective colours.
 
 <p align="center">  
-  <img src="doc/lena.png">&nbsp;&nbsp;<img src="doc/lena.png">
+  <img src="doc/lena.png" width="250">&nbsp;&nbsp;<img src="doc/result.png" width="250">
   <br>
   <em>Lena on the left is transformed to the image on the right.</em>
 </p>
